@@ -115,7 +115,7 @@ async function selectProduct() {
        selectProduct(); 
             
       },[]);   
-
+ 
    return (
     <Page title="Home page" >
         <Layout sectioned>        
