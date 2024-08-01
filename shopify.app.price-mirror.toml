@@ -3,7 +3,7 @@
 client_id = "564e314f27f4550532b039027ad0901f"
 name = "price mirror"
 handle = "price-mirror-1"
-application_url = "https://modem-combining-ash-implies.trycloudflare.com"
+application_url = "https://before-physiology-bids-tile.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://modem-combining-ash-implies.trycloudflare.com/auth/callback",
-  "https://modem-combining-ash-implies.trycloudflare.com/auth/shopify/callback",
-  "https://modem-combining-ash-implies.trycloudflare.com/api/auth/callback"
+  "https://before-physiology-bids-tile.trycloudflare.com/auth/callback",
+  "https://before-physiology-bids-tile.trycloudflare.com/auth/shopify/callback",
+  "https://before-physiology-bids-tile.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
