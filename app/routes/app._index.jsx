@@ -1,6 +1,3 @@
-
-
-
 import { useAppBridge } from "@shopify/app-bridge-react";
 import {BlockStack, Button, Card, EmptyState, Icon, Layout, Page, Text, TextField } from "@shopify/polaris";
 import { useCallback, useEffect, useState } from "react";
