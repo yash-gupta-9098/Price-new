@@ -22,11 +22,11 @@ export default  function Home (){
   const selectedStatus  = useSelector((state) => state.products.selectedStatus);
   console.log(selectedStatus)
   const status  = useSelector((state) => state.products.status);
-  const dispatch = useDispatch()   
+  const dispatch = useDispatch()
 
 
   useEffect(() => {
-    // if (status === 'idle') {       
+    // if (status === 'idle') {
     //   dispatch(fetchProducts(10));
     // }
 
@@ -34,15 +34,14 @@ export default  function Home (){
       dispatch(fetchSelectedProducts());
     }
     console.log("test")
-    
-  }, [status, dispatch]); 
+
+  }, [status, dispatch]);
 
 
   const [selected_product , setSelected_product] = useState([])
 
 
 console.log(selctedProductList  , "selctedProductList ");
-
 
 
   // useEffect(()=>{
@@ -55,7 +54,7 @@ console.log(selctedProductList  , "selctedProductList ");
   //   } catch (error) {
 
   //     console.log(error)
-      
+
   //   }
   // }
 
@@ -65,11 +64,11 @@ console.log(selctedProductList  , "selctedProductList ");
 
 
 
-  const shopify = useAppBridge();  
-  const handleBrowseProduct = useCallback(() => {     
-      selectProduct(); 
+  const shopify = useAppBridge();
+  const handleBrowseProduct = useCallback(() => {
+      selectProduct();
    });
-  
+
 async function selectProduct() {
   const productsResource = await shopify.resourcePicker({
     type: "product",
@@ -81,60 +80,60 @@ async function selectProduct() {
       variants: false,
       draft: true,
       archived: true,
-    }    
+    }
   });
 
-  
- 
-  
+
+
+
 
   //  console.log(selcetdValue);
    const selectedId =  productsResource.map((product)=> {
     console.log("run")
-       const gId = product.id.split('/').pop();      
+       const gId = product.id.split('/').pop();
         return gId
     })
       console.log(selectedId)
     axios.post("https://dynamicpricing.expertvillagemedia.com/public/api/addproduct" , {
-      product_id : selectedId, 
+      product_id : selectedId,
       shop_address : "rukaiya-demo-25.myshopify.com"
-    })    
-  
+    })
+
 }
     const browserButton = (
         <Button icon={PlusIcon} onClick={handleBrowseProduct} >
           Add Product
         </Button>
       );
-    
-    
-    
-  
+
+
+
+
     const handleTextFieldChange = useCallback(
-      (value) => {      
-       selectProduct(); 
-            
-      },[]);   
- 
+      (value) => {
+       selectProduct();
+
+      },[]);
+
    return (
     <Page title="Home page" >
-        <Layout sectioned>        
+        <Layout sectioned>
           {(
             selctedProductList && selctedProductList.length > 0 && selctedProductList != "" ) ? (<DashBoard handleTextFieldChange={handleTextFieldChange} handleBrowseProduct ={handleBrowseProduct}/>) : (
-              <Card> 
+              <Card>
               <EmptyState
                 heading="Manage your inventory transfers"
                 action={ {
                   content: 'Add Products', icon: PlusIcon,
-                  onAction: ()=>{handleBrowseProduct()},            
-                }}                
+                  onAction: ()=>{handleBrowseProduct()},
+                }}
                 image= "https://cdn.shopify.com/s/files/1/0622/1601/1965/files/emptyProductState_bb450741-2812-458d-b88d-799174333c8e.png?v=1720873673"
               >
                 <p>Track and receive your incoming inventory from suppliers.</p>
-              </EmptyState> 
-              </Card>             
+              </EmptyState>
+              </Card>
             )}
-          
+
         </Layout>
     </Page>
 )
@@ -145,9 +144,9 @@ async function selectProduct() {
 
 
 
-  
-   
-  
+
+
+
 
 {/* <Modal id="Browse-products" onHide={() => setTextFieldValue("")}>
             {showlistBox ? <h2>listbox</h2>: <h2>bySearch</h2> }
@@ -167,7 +166,7 @@ async function selectProduct() {
 // import {showToastMessage} from '../component/Toast';
 // import { Drop } from '../component/drop';
 // export default function Index() {
-//   // const dispatch = useDispatch()   
+//   // const dispatch = useDispatch()
 //   const Navigate  = useNavigate()
 //   const [productList , setProductList]= useState([])
 //   const [selctedProducts , setSelctedProducts]= useState([])
@@ -175,11 +174,11 @@ async function selectProduct() {
 //   const [buttonLoading , setButtonLoading]= useState(false)
 //   // const selctedProducts = useSelector(state=> state.productSlice.products)
 //   // const productList = useSelector(state=> state.productSlice.productList)
-//   // const loading = useSelector(state => state.productSlice.loading);  
-//   // const newProducts = useSelector(state=> state.productSlice.newselectedProducts) 
-  
+//   // const loading = useSelector(state => state.productSlice.loading);
+//   // const newProducts = useSelector(state=> state.productSlice.newselectedProducts)
+
 //   // useEffect(()=>{
-//   //   dispatch(fetchProducts())    
+//   //   dispatch(fetchProducts())
 //   // }, [])
 
 
@@ -200,13 +199,13 @@ async function selectProduct() {
 
 
 
- 
 
 
-  
+
+
 //   useEffect(()=>{
-   
-//     fetchProductList();  
+
+//     fetchProductList();
 
 
 //   },[fetchProductList])
@@ -217,7 +216,7 @@ async function selectProduct() {
 //   const [SubmitButton , setSubmitButton] = useState(true)
 //   const [newProducts , setNewProducts] = useState([])
 //   useEffect(()=>{
-   
+
 //     if(newProducts.length > 0){
 //       setSubmitButton(false)
 //     }else{
@@ -245,9 +244,9 @@ async function selectProduct() {
 //       });
 //     }
 //   }
-//   const submitdata = async () => { 
+//   const submitdata = async () => {
 
-//     setButtonLoading(true) 
+//     setButtonLoading(true)
 //     selectProduct()
 //     // if(newProducts.length !== 0){
 //     //   await axios.post('https://dynamicpricing.expertvillagemedia.com/public/api/addproduct', {
@@ -255,9 +254,9 @@ async function selectProduct() {
 //     //   }
 //     //   )
 //     //   .then(async (response) => {
-//     //     console.log(response);   
-//     //     setButtonLoading(false);   
-//     //     showToastMessage("Product is added" , 2000);             
+//     //     console.log(response);
+//     //     setButtonLoading(false);
+//     //     showToastMessage("Product is added" , 2000);
 //     //     setTimeout(() => {
 //     //       Navigate("products");
 //     //     }, 2000);
@@ -267,19 +266,19 @@ async function selectProduct() {
 //     //     setButtonLoading(false)
 //     //   });
 //     //   }
-//     //   else{        
+//     //   else{
 //     //     showToastMessage("Please select one product" , 2000);
 //     //   }
 //   };
 
 
 //   return (
-//     <div className='dp-dashbord-page page-wrapper'>  
+//     <div className='dp-dashbord-page page-wrapper'>
 //       <Page title="DashBoard" primaryAction={{content: 'Submit', disabled: SubmitButton, loading: buttonLoading , onAction: () => submitdata()}}>
 //         <Form >
-//           <Drop newProducts={newProducts} setNewProducts={setNewProducts} setSelctedProducts={setSelctedProducts}  selctedProducts={selctedProducts} productList={productList} loading={loading}/>       
+//           <Drop newProducts={newProducts} setNewProducts={setNewProducts} setSelctedProducts={setSelctedProducts}  selctedProducts={selctedProducts} productList={productList} loading={loading}/>
 //         </Form>
-//       </Page>      
+//       </Page>
 //     </div>
 //   );
 // }
