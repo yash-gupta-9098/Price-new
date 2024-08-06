@@ -29,13 +29,14 @@ export const loader = async ({ request }) => {
   const scope = "read_products"; // Define your scope
   const shop = new URL(request.url).searchParams.get("shop");
   const LARAVEL_REDIRECT_URI = 'https://dynamicpricing.expertvillagemedia.com/public/auth/callback';
+  const SHOP_DOMAIN = 'demo-evm.myshopify.com';
 
   if (!shop) {
     throw new Error("Shop parameter is missing");
   }
 
   // Step 3: Create the OAuth authorization URL
-  const authUrl = `https://${process.env.SHOP_DOMAIN}/admin/oauth/authorize?client_id=${process.env.SHOPIFY_API_KEY}&scope=${encodeURIComponent(scope)}&redirect_uri=${process.env.LARAVEL_REDIRECT_URI}&state=${session.id}`;
+  const authUrl = `https://${SHOP_DOMAIN}/admin/oauth/authorize?client_id=${process.env.SHOPIFY_API_KEY}&scope=${encodeURIComponent(scope)}&redirect_uri=${LARAVEL_REDIRECT_URI}&state=${session.id}`;
 
   // Step 4: Redirect to the OAuth authorization URL if not authenticated
   if (!session.get("accessToken")) {
